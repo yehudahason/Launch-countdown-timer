@@ -23,13 +23,11 @@ export default function FlipCard({ value }: FlipCardProps) {
     setBottomFlip(value);
     setFlipTop(true);
 
-    // After top half finishes, update static base and start bottom flip
     const timer = setTimeout(() => {
       setTop(value);
       setFlipTop(false);
       setFlipBottom(true);
 
-      // After bottom half finishes, reset
       setTimeout(() => {
         setBottom(value);
         setFlipBottom(false);
@@ -39,18 +37,22 @@ export default function FlipCard({ value }: FlipCardProps) {
 
     return () => clearTimeout(timer);
   }, [value]);
+
   return (
-    <div className="relative h-36 w-28" style={{ perspective: "1000px" }}>
+    <div
+      className="relative aspect-[7/9] supersmall:w-10  w-8 xs:w-10 sm:w-14 md:w-18 lg:w-24"
+      style={{ perspective: "1000px" }}
+    >
       {/* Static Top */}
-      <div className="absolute inset-x-0 top-0 z-10 flex h-18 items-end justify-center overflow-hidden rounded-t-xl bg-[#343650] shadow-inner">
-        <span className="translate-y-[50%] text-[5rem] leading-none font-bold text-[#FB5E84]">
+      <div className="absolute inset-x-0 top-0 z-10 flex h-1/2 items-end justify-center overflow-hidden rounded-t-xl bg-[#343650] shadow-inner">
+        <span className="translate-y-[50%] text-[clamp(1.75rem,7vw,5rem)] leading-none font-bold text-[#FB5E84]">
           {top}
         </span>
       </div>
 
       {/* Static Bottom */}
-      <div className="absolute inset-x-0 bottom-0 z-10 flex h-18 items-start justify-center overflow-hidden rounded-b-xl bg-[#2C2E44]">
-        <span className="-translate-y-[50%] text-[5rem] leading-none font-bold text-[#FB5E84]">
+      <div className="absolute inset-x-0 bottom-0 z-10 flex h-1/2 items-start justify-center overflow-hidden rounded-b-xl bg-[#2C2E44]">
+        <span className="-translate-y-[50%] text-[clamp(1.75rem,7vw,5rem)] leading-none font-bold text-[#FB5E84]">
           {bottom}
         </span>
       </div>
@@ -58,13 +60,13 @@ export default function FlipCard({ value }: FlipCardProps) {
       {/* Animated Top */}
       {flipTop && (
         <div
-          className="animate-flip-top absolute inset-x-0 top-0 z-30 flex h-18 items-end justify-center overflow-hidden rounded-t-xl bg-[#343650]"
+          className="animate-flip-top absolute inset-x-0 top-0 z-30 flex h-1/2 items-end justify-center overflow-hidden rounded-t-xl bg-[#343650]"
           style={{
             transformOrigin: "bottom",
             backfaceVisibility: "hidden",
           }}
         >
-          <span className="translate-y-[50%] text-[5rem] leading-none font-bold text-[#FB5E84]">
+          <span className="translate-y-[50%] text-[clamp(1.75rem,7vw,5rem)] leading-none font-bold text-[#FB5E84]">
             {topFlip}
           </span>
         </div>
@@ -73,13 +75,13 @@ export default function FlipCard({ value }: FlipCardProps) {
       {/* Animated Bottom */}
       {flipBottom && (
         <div
-          className="animate-flip-bottom absolute inset-x-0 bottom-0 z-20 flex h-18 items-start justify-center overflow-hidden rounded-b-xl bg-[#2C2E44]"
+          className="animate-flip-bottom absolute inset-x-0 bottom-0 z-20 flex h-1/2 items-start justify-center overflow-hidden rounded-b-xl bg-[#2C2E44]"
           style={{
             transformOrigin: "top",
             backfaceVisibility: "hidden",
           }}
         >
-          <span className="-translate-y-[50%] text-[5rem] leading-none font-bold text-[#FB5E84]">
+          <span className="-translate-y-[50%] text-[clamp(1.75rem,7vw,5rem)] leading-none font-bold text-[#FB5E84]">
             {bottomFlip}
           </span>
         </div>
@@ -89,8 +91,8 @@ export default function FlipCard({ value }: FlipCardProps) {
       <div className="absolute left-0 top-1/2 z-40 h-px w-full -translate-y-1/2 bg-black/30" />
 
       {/* Side circles */}
-      <div className="absolute -left-2 top-1/2 z-50 h-4 w-4 -translate-y-1/2 rounded-full bg-[#191A24]" />
-      <div className="absolute -right-2 top-1/2 z-50 h-4 w-4 -translate-y-1/2 rounded-full bg-[#191A24]" />
+      <div className="absolute -left-1 top-1/2 z-50 h-2 w-2 -translate-y-1/2 rounded-full bg-[#191A24] sm:-left-2 sm:h-4 sm:w-4 " />
+      <div className="absolute -right-1 top-1/2 z-50 h-2 w-2 -translate-y-1/2 rounded-full bg-[#191A24] sm:-right-2 sm:h-4 sm:w-4" />
     </div>
   );
 }

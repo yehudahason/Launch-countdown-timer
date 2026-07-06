@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+@theme {
+  --breakpoint-supersmall: 400px;
+}
 /* ========================= */
 /* Flip Card Animation */
 /* ========================= */
