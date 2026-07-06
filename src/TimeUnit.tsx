@@ -11,7 +11,7 @@ export default function TimeUnit({ value, label }: TimeUnitProps) {
 
   return (
     <div className="flex flex-col items-center gap-4">
-      <div className="flex gap-px">
+      <div className="flex gap-0">
         <FlipCard value={tens} left={true} ones={ones} />
         <FlipCard value={ones} left={false} ones={ones} />
       </div>

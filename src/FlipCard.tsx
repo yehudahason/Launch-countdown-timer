@@ -66,7 +66,7 @@ export default function FlipCard({ value, left, ones }: FlipCardProps) {
       {/* Animated Top */}
       {flipTop && (
         <div
-          className={`animate-flip-top absolute inset-x-0 top-0 z-30 flex h-1/2 items-end justify-center overflow-hidden rounded-t-xl bg-[#343650] border ${left ? "rounded-tl-xl border-l-blue-900 border-t-blue-900" : "rounded-tr-xl border-r-blue-900 border-t-blue-900"}`}
+          className={`animate-flip-top absolute inset-x-0 top-0 z-30 flex h-1/2 items-end justify-center overflow-hidden  bg-[#343650] border ${left ? "rounded-tl-xl border-l-blue-900 border-t-blue-900" : "rounded-tr-xl border-r-blue-900 border-t-blue-900"}`}
           style={{
             transformOrigin: "bottom",
             backfaceVisibility: "hidden",
@@ -81,7 +81,7 @@ export default function FlipCard({ value, left, ones }: FlipCardProps) {
       {/* Animated Bottom */}
       {flipBottom && (
         <div
-          className={`border animate-flip-bottom absolute inset-x-0 bottom-0 z-20 flex h-1/2 items-start justify-center overflow-hidden rounded-b-xl bg-[#2C2E44]
+          className={`border animate-flip-bottom absolute inset-x-0 bottom-0 z-20 flex h-1/2 items-start justify-center overflow-hidden  bg-[#2C2E44]
             ${left ? "rounded-bl-xl border-l-blue-900 border-b-blue-900" : "rounded-br-xl border-r-blue-900 border-b-blue-900"}`}
           style={{
             transformOrigin: "top",
