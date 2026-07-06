@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-// import FlipCard from "./FlipCard";
-import TimeUnit from "./TimeUnit";
+import FlipCard from "./FlipCard";
+
 export default function App() {
   const START_DAYS = 9;
 
@@ -16,17 +16,17 @@ export default function App() {
 
   const seconds = secondsRemaining % 60;
 
-  // const dayTens = Math.floor(days / 10);
-  // const dayOnes = days % 10;
+  const dayTens = Math.floor(days / 10);
+  const dayOnes = days % 10;
 
-  // const hourTens = Math.floor(hours / 10);
-  // const hourOnes = hours % 10;
+  const hourTens = Math.floor(hours / 10);
+  const hourOnes = hours % 10;
 
-  // const minuteTens = Math.floor(minutes / 10);
-  // const minuteOnes = minutes % 10;
+  const minuteTens = Math.floor(minutes / 10);
+  const minuteOnes = minutes % 10;
 
-  // const secondTens = Math.floor(seconds / 10);
-  // const secondOnes = seconds % 10;
+  const secondTens = Math.floor(seconds / 10);
+  const secondOnes = seconds % 10;
   useEffect(() => {
     const timer = setInterval(() => {
       setSecondsRemaining((prev) => {
@@ -46,36 +46,45 @@ export default function App() {
         {/* Days Container */}
         <div className="flex flex-col items-center gap-4">
           <div className="flex gap-1 sm:gap-2">
-            {/* <FlipCard value={dayTens} />
-            <FlipCard value={dayOnes} /> */}
-            <TimeUnit value={days} label="DAYS" />
+            <FlipCard value={dayTens} />
+            <FlipCard value={dayOnes} />
           </div>
+          <span className="text-xs uppercase tracking-[0.2em] text-[#8486A9]">
+            Days
+          </span>
         </div>
+
         {/* Hours Container */}
         <div className="flex flex-col items-center gap-4">
           <div className="flex gap-1 sm:gap-2">
-            <TimeUnit value={hours} label="HOURS" />
-            {/* <FlipCard value={hourTens} />
-            <FlipCard value={hourOnes} /> */}
+            <FlipCard value={hourTens} />
+            <FlipCard value={hourOnes} />
           </div>
+          <span className="text-xs uppercase tracking-[0.2em] text-[#8486A9]">
+            Hours
+          </span>
         </div>
 
         {/* Minutes Container */}
         <div className="flex flex-col items-center gap-4">
           <div className="flex gap-1 sm:gap-2">
-            <TimeUnit value={minutes} label="MINUTES" />
-            {/* <FlipCard value={minuteTens} />
-            <FlipCard value={minuteOnes} /> */}
+            <FlipCard value={minuteTens} />
+            <FlipCard value={minuteOnes} />
           </div>
+          <span className="text-xs uppercase tracking-[0.2em] text-[#8486A9]">
+            Minutes
+          </span>
         </div>
 
         {/* Seconds Container */}
         <div className="flex flex-col items-center gap-4">
           <div className="flex gap-1 sm:gap-2">
-            <TimeUnit value={seconds} label="SECONDS" />
-            {/* <FlipCard value={secondTens} />
-            <FlipCard value={secondOnes} /> */}
+            <FlipCard value={secondTens} />
+            <FlipCard value={secondOnes} />
           </div>
+          <span className="text-xs uppercase tracking-[0.2em] text-[#8486A9]">
+            Seconds
+          </span>
         </div>
       </div>
     </main>
