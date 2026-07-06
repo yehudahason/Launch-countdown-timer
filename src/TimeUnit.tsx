@@ -10,8 +10,8 @@ export default function TimeUnit({ value, label }: TimeUnitProps) {
   const ones = value % 10;
 
   return (
-    <div className="flex flex-col items-center gap-4">
-      <div className="flex gap-0">
+    <div className="flex flex-col items-center gap-0">
+      <div className="flex gap-px">
         <FlipCard value={tens} left={true} ones={ones} />
         <FlipCard value={ones} left={false} ones={ones} />
       </div>

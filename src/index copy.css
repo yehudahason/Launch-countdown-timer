@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@theme {
+  --breakpoint-supersmall: 400px;
+}
+/* ========================= */
+/* Flip Card Animation */
+/* ========================= */
+.animate-flip-top {
+  animation: flip-top 0.4s linear forwards;
+}
+
+.animate-flip-bottom {
+  animation: flip-bottom 0.4s linear forwards;
+}
+
+@keyframes flip-top {
+  to {
+    transform: rotateX(-90deg);
+  }
+}
+
+@keyframes flip-bottom {
+  from {
+    transform: rotateX(90deg);
+  }
+  to {
+    transform: rotateX(0deg);
+  }
+}

@@ -42,12 +42,12 @@ export default function FlipCard({ value, left, ones }: FlipCardProps) {
 
   return (
     <div
-      className="relative aspect-[6/9] supersmall:w-8  w-6 xs:w-8 sm:w-12 md:w-16 lg:w-22"
+      className="relative aspect-6/9 supersmall:w-8  w-6 xs:w-8 sm:w-12 md:w-15 lg:w-18"
       style={{ perspective: "1000px" }}
     >
       {/* Static Top */}
       <div
-        className={`absolute border inset-x-0 top-0 z-10 flex h-1/2 items-end justify-center overflow-hidden ${left ? "rounded-tl-xl  border-l-blue-900 border-t-blue-900" : "rounded-tr-xl border-r-blue-900 border-t-blue-900"} bg-[#343650] shadow-inner`}
+        className={`absolute border inset-x-0 top-0 z-10 flex h-1/2 items-end justify-center overflow-hidden ${left ? "sm:rounded-tl-xl rounded-tl  border-r-0 border-l-blue-900 border-t-blue-900" : "sm:rounded-tr-xl border-l-0 rounded-tr border-r-blue-900 border-t-blue-900"} bg-[#252530] shadow-inner`}
       >
         <span className="translate-y-[50%] text-[clamp(1.75rem,7vw,5rem)] leading-none font-bold text-[#FB5E84]">
           {top}
@@ -56,9 +56,9 @@ export default function FlipCard({ value, left, ones }: FlipCardProps) {
 
       {/* Static Bottom */}
       <div
-        className={`absolute border inset-x-0 bottom-0 z-10 flex h-1/2 items-start justify-center overflow-hidden ${left ? "rounded-bl-xl border-l-blue-900 border-b-blue-900" : "rounded-br-xl border-r-blue-900 border-b-blue-900"} bg-[#2C2E44]`}
+        className={`absolute border inset-x-0 bottom-0 z-10 flex h-1/2 items-start justify-center overflow-hidden ${left ? "sm:rounded-bl-xl border-r-0 rounded-bl border-l-blue-900 border-b-blue-900" : "sm:rounded-br-xl border-l-0 rounded-br border-r-blue-900 border-b-blue-900"} bg-[#2C2E44]`}
       >
-        <span className="-translate-y-[50%] text-[clamp(1.75rem,7vw,5rem)] leading-none font-bold text-[#FB5E84]">
+        <span className="translate-y-[-50%] text-[clamp(1.75rem,7vw,5rem)] leading-none font-bold text-[#FB5E84]">
           {bottom}
         </span>
       </div>
@@ -66,7 +66,7 @@ export default function FlipCard({ value, left, ones }: FlipCardProps) {
       {/* Animated Top */}
       {flipTop && (
         <div
-          className={`animate-flip-top absolute inset-x-0 top-0 z-30 flex h-1/2 items-end justify-center overflow-hidden  bg-[#343650] border ${left ? "rounded-tl-xl border-l-blue-900 border-t-blue-900" : "rounded-tr-xl border-r-blue-900 border-t-blue-900"}`}
+          className={`animate-flip-top absolute inset-x-0 top-0 z-30 flex h-1/2 items-end justify-center overflow-hidden  bg-[#252530] border ${left ? "sm:rounded-tl-xl rounded-tl border-l-blue-900 border-r-0 border-t-blue-900" : "sm:rounded-tr-xl rounded-tr border-l-0 border-r-blue-900 border-t-blue-900"}`}
           style={{
             transformOrigin: "bottom",
             backfaceVisibility: "hidden",
@@ -82,13 +82,13 @@ export default function FlipCard({ value, left, ones }: FlipCardProps) {
       {flipBottom && (
         <div
           className={`border animate-flip-bottom absolute inset-x-0 bottom-0 z-20 flex h-1/2 items-start justify-center overflow-hidden  bg-[#2C2E44]
-            ${left ? "rounded-bl-xl border-l-blue-900 border-b-blue-900" : "rounded-br-xl border-r-blue-900 border-b-blue-900"}`}
+            ${left ? "sm:rounded-bl-xl border-r-0 rounded-bl border-l-blue-900 border-b-blue-900" : "sm:rounded-br-xl rounded-br border-l-0 border-r-blue-900 border-b-blue-900"}`}
           style={{
             transformOrigin: "top",
             backfaceVisibility: "hidden",
           }}
         >
-          <span className="-translate-y-[50%] text-[clamp(1.75rem,7vw,5rem)] leading-none font-bold text-[#FB5E84]">
+          <span className="translate-y-[-50%] text-[clamp(1.75rem,7vw,5rem)] leading-none font-bold text-[#FB5E84]">
             {bottomFlip}
           </span>
         </div>
