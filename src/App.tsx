@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import TimeUnit from "./components/TimeUnit";
 import EndScreen from "./components/EndScreen";
 import NavForm from "./components/NavForm";
+import MainTimer from "./components/MainTimer";
 export default function App() {
   function toSeconds({
     days = 0,
@@ -72,41 +72,30 @@ export default function App() {
   return (
     <>
       <main className="flex  flex-col gap-13 min-h-screen items-center justify-center bg-[#191A24] pt-20">
+        {/* stars img */}
         <img
           className="inset-0 z-0 absolute w-full"
           src={`${baseUrl}/bg-stars.svg`}
           alt=""
         />
+        {/* hills  img*/}
         <img
           className="absolute z-100 left-0 right-0 bottom-0 w-full"
           src={`${baseUrl}/pattern-hills.svg`}
           alt=""
         />
+        {/* End Screen */}
         {isEnd && <EndScreen />}
         <h1 className="text-gray-100 uppercase font-bold sm:text-3xl -mt-40 text-lg">
           We're launching soon
         </h1>
 
-        <div className="flex justify-center mt-6 gap-4 sm:gap-6 md:gap-8">
-          {/* Days Container */}
-          <div className="flex flex-col items-center ">
-            <TimeUnit value={days} label="DAYS" />
-          </div>
-          {/* Hours Container */}
-          <div className="flex flex-col items-center ">
-            <TimeUnit value={hours} label="HOURS" />
-          </div>
-
-          {/* Minutes Container */}
-          <div className="flex flex-col items-center ">
-            <TimeUnit value={minutes} label="MINUTES" />
-          </div>
-
-          {/* Seconds Container */}
-          <div className="flex flex-col items-center ">
-            <TimeUnit value={seconds} label="SECONDS" />
-          </div>
-        </div>
+        <MainTimer
+          days={days}
+          hours={hours}
+          minutes={minutes}
+          seconds={seconds}
+        />
         <button
           aria-label="Menu"
           type="button"

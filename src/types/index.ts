@@ -23,3 +23,10 @@ export interface NavFormProps {
   setStart: StartSetter;
   handleStart: () => void;
 }
+
+export type MainTimerProps = {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+};
