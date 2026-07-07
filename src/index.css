@@ -2,6 +2,17 @@
 
 @import "tailwindcss";
 
+:root {
+  --gradient-01: linear-gradient(90deg, #f37362 0%, #f6ac5e 100%);
+}
+
+.gradient-text {
+  background: var(--gradient-01);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
 body {
   font-family: "Red Hat Text";
 }
