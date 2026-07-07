@@ -7,7 +7,7 @@ body {
 }
 
 @theme {
-  --breakpoint-supersmall: 400px;
+  --breakpoint-ssm: 400px;
 }
 /* ========================= */
 /* Flip Card Animation */

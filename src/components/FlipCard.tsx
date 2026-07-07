@@ -38,7 +38,7 @@ export default function FlipCard({ value, left }: FlipCardProps) {
 
   return (
     <div
-      className="relative aspect-5/9 supersmall:w-10  w-7 xs:w-8 sm:w-13 md:w-17 lg:w-20"
+      className="relative aspect-5/9 sm:w-12  w-7 xs:w-10 ssm:w-11 md:w-17 lg:w-20"
       style={{ perspective: "1000px" }}
     >
       {/* Static Top */}
