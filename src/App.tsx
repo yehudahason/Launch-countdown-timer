@@ -3,26 +3,6 @@ import { useEffect, useState } from "react";
 import TimeUnit from "./components/TimeUnit";
 import type { START } from "./types";
 export default function App() {
-  const [start, setStart] = useState<START>({
-    days: 1,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  });
-
-  const [secondsRemaining, setSecondsRemaining] = useState(0);
-
-  const [endTime, setEndTime] = useState<number | null>(null);
-  const [menuOpen, setMenuOpen] = useState<boolean>(false);
-  const baseUrl = import.meta.env.BASE_URL;
-  const days = Math.floor(secondsRemaining / (24 * 60 * 60));
-
-  const hours = Math.floor((secondsRemaining % (24 * 60 * 60)) / (60 * 60));
-
-  const minutes = Math.floor((secondsRemaining % (60 * 60)) / 60);
-
-  const seconds = secondsRemaining % 60;
-
   function toSeconds({
     days = 0,
     hours = 0,
@@ -36,6 +16,43 @@ export default function App() {
   }) {
     return days * 86400 + hours * 3600 + minutes * 60 + seconds;
   }
+  const initialStart = {
+    days: 9,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  };
+
+  const [start, setStart] = useState(initialStart);
+
+  const [secondsRemaining, setSecondsRemaining] = useState(() =>
+    toSeconds(initialStart),
+  );
+
+  const [endTime, setEndTime] = useState(
+    () => Date.now() + toSeconds(initialStart) * 1000,
+  );
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const [end, setEnd] = useState<boolean>(false);
+  const baseUrl = import.meta.env.BASE_URL;
+  const days = Math.floor(secondsRemaining / (24 * 60 * 60));
+
+  const hours = Math.floor((secondsRemaining % (24 * 60 * 60)) / (60 * 60));
+
+  const minutes = Math.floor((secondsRemaining % (60 * 60)) / 60);
+
+  const seconds = secondsRemaining % 60;
+
+  function handleStart() {
+    const totalSeconds = toSeconds(start);
+
+    if (totalSeconds <= 0) return;
+
+    setSecondsRemaining(totalSeconds);
+    setEndTime(() => Date.now() + totalSeconds * 1000);
+    setMenuOpen(false);
+    setEnd(false);
+  }
   useEffect(() => {
     if (endTime === null) return;
 
@@ -46,6 +63,7 @@ export default function App() {
 
       if (remaining === 0) {
         clearInterval(timer);
+        setEnd(true);
       }
     }, 1000);
 
@@ -54,7 +72,7 @@ export default function App() {
 
   return (
     <>
-      <main className="flex  flex-col gap-10 min-h-screen items-center justify-center bg-[#191A24] pt-20">
+      <main className="flex  flex-col gap-13 min-h-screen items-center justify-center bg-[#191A24] pt-20">
         <img
           className="inset-0 z-0 absolute"
           src={`${baseUrl}/bg-stars.svg`}
@@ -65,14 +83,25 @@ export default function App() {
           src={`${baseUrl}/pattern-hills.svg`}
           alt=""
         />
+        {end ? (
+          <>
+            <h1 className="z-7001 sm:text-5xl text-3xl space-x-4 font-bold text-yellow-400">
+              {" "}
+              We've launched!
+            </h1>
+            <img
+              src={`${baseUrl}BigBang.gif`}
+              alt=""
+              className="fixed top-0 left-0 h-screen  w-full z-7000"
+            />
+          </>
+        ) : (
+          ""
+        )}
         <h1 className="text-gray-100 uppercase font-bold sm:text-3xl -mt-40 text-lg">
           We're launching soon
         </h1>
-        <button
-          onClick={() =>
-            setStart({ days: 0, hours: 0, minutes: 0, seconds: 0 })
-          }
-        ></button>
+
         <div className="flex justify-center mt-6 gap-4 sm:gap-6 md:gap-8">
           {/* Days Container */}
           <div className="flex flex-col items-center ">
@@ -95,7 +124,7 @@ export default function App() {
         </div>
         <button
           type="button"
-          className="cursor-pointer z-5000"
+          className="cursor-pointer z-7001"
           onClick={() => {
             setMenuOpen(!menuOpen);
           }}
@@ -106,7 +135,7 @@ export default function App() {
         <nav
           className={`${menuOpen ? "flex" : "hidden"} fixed 
         top-[50%] 
-        left-[50%] translate-[-50%] z-2000`}
+        left-[50%] translate-[-50%] z-7001`}
         >
           <form
             action=""
@@ -180,12 +209,7 @@ export default function App() {
               type="submit"
               onClick={(e) => {
                 e.preventDefault();
-
-                const totalSeconds = toSeconds(start);
-
-                setSecondsRemaining(totalSeconds);
-                setEndTime(Date.now() + totalSeconds * 1000);
-                setMenuOpen(false);
+                handleStart();
               }}
               className="hover:bg-blue-950 flex justify-center items-center py-1 rounded-2xl bg-gray-800 text-gray-50 cursor-pointer"
             >
