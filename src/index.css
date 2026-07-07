@@ -1,4 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inconsolata:wght@200..900&family=Outfit:wght@100..900&family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap");
+
 @import "tailwindcss";
+
+body {
+  font-family: "Red Hat Text";
+  background-image: url("/pattern-hills.svg");
+}
 
 @theme {
   --breakpoint-supersmall: 400px;

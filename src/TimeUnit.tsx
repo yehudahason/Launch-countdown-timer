@@ -12,11 +12,11 @@ export default function TimeUnit({ value, label }: TimeUnitProps) {
   return (
     <div className="flex flex-col items-center gap-0">
       <div className="flex gap-px">
-        <FlipCard value={tens} left={true} ones={ones} />
-        <FlipCard value={ones} left={false} ones={ones} />
+        <FlipCard value={tens} left={true} />
+        <FlipCard value={ones} left={false} />
       </div>
 
-      <span className="text-xs font-bold tracking-[0.3em] text-gray-500">
+      <span className="text-xs mt-8 font-bold tracking-[0.3em] text-gray-500">
         {label}
       </span>
     </div>

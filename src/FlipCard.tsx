@@ -3,10 +3,9 @@ import { useEffect, useRef, useState } from "react";
 interface FlipCardProps {
   value: number;
   left: boolean;
-  ones: number;
 }
 
-export default function FlipCard({ value, left, ones }: FlipCardProps) {
+export default function FlipCard({ value, left }: FlipCardProps) {
   const previous = useRef(value);
 
   const [top, setTop] = useState(value);
@@ -38,11 +37,11 @@ export default function FlipCard({ value, left, ones }: FlipCardProps) {
     }, 400);
 
     return () => clearTimeout(timer);
-  }, [value, ones]);
+  }, [value]);
 
   return (
     <div
-      className="relative aspect-6/9 supersmall:w-8  w-6 xs:w-8 sm:w-12 md:w-15 lg:w-18"
+      className="relative aspect-6/9 supersmall:w-10  w-7 xs:w-8 sm:w-13 md:w-17 lg:w-20"
       style={{ perspective: "1000px" }}
     >
       {/* Static Top */}
