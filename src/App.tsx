@@ -51,7 +51,6 @@ export default function App() {
     setSecondsRemaining(totalSeconds);
     setEndTime(() => Date.now() + totalSeconds * 1000);
     setMenuOpen(false);
-    setEnd(false);
   }
   useEffect(() => {
     if (endTime === null) return;
@@ -63,7 +62,6 @@ export default function App() {
 
       if (remaining === 0) {
         clearInterval(timer);
-        setEnd(true);
       }
     }, 1000);
 
@@ -74,12 +72,12 @@ export default function App() {
     <>
       <main className="flex  flex-col gap-13 min-h-screen items-center justify-center bg-[#191A24] pt-20">
         <img
-          className="inset-0 z-0 absolute"
+          className="inset-0 z-0 absolute w-full"
           src={`${baseUrl}/bg-stars.svg`}
           alt=""
         />
         <img
-          className="absolute z-100 left-0 right-0 bottom-0"
+          className="absolute z-100 left-0 right-0 bottom-0 w-full"
           src={`${baseUrl}/pattern-hills.svg`}
           alt=""
         />
