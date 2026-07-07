@@ -13,3 +13,13 @@ export interface TimeUnitProps {
   value: number;
   label: string;
 }
+
+interface StartSetter {
+  (value: React.SetStateAction<START>): void;
+}
+export interface NavFormProps {
+  menuOpen: boolean;
+  start: START;
+  setStart: StartSetter;
+  handleStart: () => void;
+}
