@@ -1,20 +1,15 @@
 import { useEffect, useState } from "react";
 // import FlipCard from "./FlipCard";
-import TimeUnit from "./TimeUnit";
+import TimeUnit from "./components/TimeUnit";
+import type { START } from "./types";
 export default function App() {
-  type START = {
-    days: number;
-    hours: number;
-    minutes: number;
-    seconds: number;
-  };
   const [start, setStart] = useState<START>({
     days: 0,
     hours: 0,
     minutes: 0,
     seconds: 10,
   });
-
+  setStart({ days: 0, hours: 0, minutes: 0, seconds: 10 });
   const [secondsRemaining, setSecondsRemaining] = useState(toSeconds(start));
   const baseUrl = import.meta.env.BASE_URL;
   const days = Math.floor(secondsRemaining / (24 * 60 * 60));
@@ -65,7 +60,7 @@ export default function App() {
           src={`${baseUrl}/pattern-hills.svg`}
           alt=""
         />
-        <h1 className="text-gray-100 uppercase font-bold sm:text-2xl mt-[-10rem] text-lg">
+        <h1 className="text-gray-100 uppercase font-bold sm:text-2xl -mt-40 text-lg">
           We're launching soon
         </h1>
         <div className="flex mt-6 gap-4 sm:gap-6 md:gap-8">

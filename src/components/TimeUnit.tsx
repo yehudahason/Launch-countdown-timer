@@ -1,9 +1,5 @@
 import FlipCard from "./FlipCard";
-
-interface TimeUnitProps {
-  value: number;
-  label: string;
-}
+import type { TimeUnitProps } from "../types";
 
 export default function TimeUnit({ value, label }: TimeUnitProps) {
   const tens = Math.floor(value / 10);
