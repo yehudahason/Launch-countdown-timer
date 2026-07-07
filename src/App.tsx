@@ -2,12 +2,20 @@ import { useEffect, useState } from "react";
 // import FlipCard from "./FlipCard";
 import TimeUnit from "./TimeUnit";
 export default function App() {
-  const START_DAYS = 9;
+  type START = {
+    days: number;
+    hours: number;
+    minutes: number;
+    seconds: number;
+  };
+  const [start, setStart] = useState<START>({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 10,
+  });
 
-  const [secondsRemaining, setSecondsRemaining] = useState(
-    START_DAYS * 24 * 60 * 60,
-  );
-
+  const [secondsRemaining, setSecondsRemaining] = useState(toSeconds(start));
   const baseUrl = import.meta.env.BASE_URL;
   const days = Math.floor(secondsRemaining / (24 * 60 * 60));
 
@@ -17,11 +25,25 @@ export default function App() {
 
   const seconds = secondsRemaining % 60;
 
+  function toSeconds({
+    days = 0,
+    hours = 0,
+    minutes = 0,
+    seconds = 0,
+  }: {
+    days?: number;
+    hours?: number;
+    minutes?: number;
+    seconds?: number;
+  }) {
+    return days * 86400 + hours * 3600 + minutes * 60 + seconds;
+  }
   useEffect(() => {
     const timer = setInterval(() => {
       setSecondsRemaining((prev) => {
         if (prev === 0) {
-          return START_DAYS * 24 * 60 * 60;
+          clearInterval(timer);
+          return 0;
         }
         return prev - 1;
       });
