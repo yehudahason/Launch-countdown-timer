@@ -4,10 +4,10 @@ import TimeUnit from "./components/TimeUnit";
 import type { START } from "./types";
 export default function App() {
   const [start, setStart] = useState<START>({
-    days: 9,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
+    days: 1,
+    hours: 1,
+    minutes: 1,
+    seconds: 1,
   });
 
   const [secondsRemaining, setSecondsRemaining] = useState(toSeconds(start));
@@ -51,12 +51,12 @@ export default function App() {
     <>
       <main className="flex  flex-col gap-16 min-h-screen items-center justify-center bg-[#191A24]">
         <img
-          className="inset-0 z-20 absolute"
+          className="inset-0 z-0 absolute"
           src={`${baseUrl}/bg-stars.svg`}
           alt=""
         />
         <img
-          className="absolute z-10 left-0 right-0 bottom-0"
+          className="absolute z-100 left-0 right-0 bottom-0"
           src={`${baseUrl}/pattern-hills.svg`}
           alt=""
         />
