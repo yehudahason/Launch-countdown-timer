@@ -12,7 +12,7 @@ export default function TimeUnit({ value, label }: TimeUnitProps) {
         <FlipCard value={ones} left={false} />
       </div>
 
-      <span className="sm:text-xs text-[9px] font-bold tracking-[0.3em] text-gray-500">
+      <span className="sm:text-xs text-[9px] font-bold tracking-[0.3em] text-gray-400">
         {label}
       </span>
     </div>

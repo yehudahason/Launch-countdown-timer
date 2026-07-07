@@ -7,7 +7,7 @@ export default function MainTimer({
   seconds,
 }: MainTimerProps) {
   return (
-    <div className="flex justify-center mt-6 gap-4 sm:gap-6 md:gap-8">
+    <div className="flex justify-center  gap-4 sm:gap-6 md:gap-8">
       {/* Days Container */}
       <div className="flex flex-col items-center ">
         <TimeUnit value={days} label="DAYS" />

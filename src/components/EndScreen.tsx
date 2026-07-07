@@ -9,7 +9,7 @@ export default function EndScreen() {
       <img
         src={`${baseUrl}BigBang.gif`}
         alt=""
-        className="fixed top-0 left-0 h-screen  w-full z-7000"
+        className="fixed top-0 left-0 h-screen   w-full z-7000"
       />
     </>
   );
