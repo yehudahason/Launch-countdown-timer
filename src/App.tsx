@@ -91,7 +91,7 @@ export default function App() {
         />
         {/* End Screen */}
         {isEnd && <EndScreen />}
-        <h1 className="text-gray-100 uppercase font-bold ssm:text-3xl text-2xl ssm:w-fit text-center sm:tracking-[0.5rem] tracking-wider w-[19rem]">
+        <h1 className="text-gray-100 uppercase font-bold ssm:text-3xl text-2xl ssm:w-fit text-center sm:tracking-[0.5rem] tracking-wider w-76">
           We're launching soon
         </h1>
 

@@ -21,19 +21,27 @@ export default function FlipCard({ value, left }: FlipCardProps) {
     setBottomFlip(value);
     setFlipTop(true);
 
-    const timer = setTimeout(() => {
+    const timer1 = setTimeout(() => {
       setTop(value);
       setFlipTop(false);
       setFlipBottom(true);
 
-      setTimeout(() => {
+      const timer2 = setTimeout(() => {
         setBottom(value);
         setFlipBottom(false);
         previous.current = value;
       }, 400);
+
+      // Store timer2 so cleanup can access it
+      cleanupTimer2 = timer2;
     }, 400);
 
-    return () => clearTimeout(timer);
+    let cleanupTimer2: ReturnType<typeof setTimeout>;
+
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(cleanupTimer2);
+    };
   }, [value]);
 
   return (
@@ -45,10 +53,7 @@ export default function FlipCard({ value, left }: FlipCardProps) {
       <div
         className={`absolute border inset-x-0 top-0 z-12 flex h-1/2 items-end justify-center overflow-hidden ${left ? "sm:rounded-tl-xl rounded-tl  border-r-0 border-l-blue-900 border-t-blue-900" : "sm:rounded-tr-xl border-l-0 rounded-tr border-r-blue-900 border-t-blue-900"} bg-[#252530] shadow-inner`}
       >
-        <span
-          aria-label="hidden"
-          className="translate-y-[50%] text-[clamp(2rem,8vw,5rem)] leading-none font-bold text-[#FB5E84]"
-        >
+        <span className="translate-y-[50%] text-[clamp(2rem,8vw,5rem)] leading-none font-bold text-[#FB5E84]">
           {top}
         </span>
       </div>
@@ -57,10 +62,7 @@ export default function FlipCard({ value, left }: FlipCardProps) {
       <div
         className={`absolute border inset-x-0 bottom-0 z-10 flex h-1/2 items-start justify-center overflow-hidden ${left ? "sm:rounded-bl-xl border-r-0 rounded-bl border-l-blue-900 border-b-blue-900" : "sm:rounded-br-xl border-l-0 rounded-br border-r-blue-900 border-b-blue-900"} bg-[#2C2E44]`}
       >
-        <span
-          aria-label="hidden"
-          className="translate-y-[-50%] text-[clamp(2rem,8vw,5rem)] leading-none font-bold text-[#FB5E84]"
-        >
+        <span className="translate-y-[-50%] text-[clamp(2rem,8vw,5rem)] leading-none font-bold text-[#FB5E84]">
           {bottom}
         </span>
       </div>
@@ -74,10 +76,7 @@ export default function FlipCard({ value, left }: FlipCardProps) {
             backfaceVisibility: "hidden",
           }}
         >
-          <span
-            aria-label="hidden"
-            className="translate-y-[50%] text-[clamp(2rem,8vw,5rem)] leading-none font-bold text-[#FB5E84]"
-          >
+          <span className="translate-y-[50%] text-[clamp(2rem,8vw,5rem)] leading-none font-bold text-[#FB5E84]">
             {topFlip}
           </span>
         </div>
@@ -93,10 +92,7 @@ export default function FlipCard({ value, left }: FlipCardProps) {
             backfaceVisibility: "hidden",
           }}
         >
-          <span
-            aria-label="hidden"
-            className="translate-y-[-50%] text-[clamp(2rem,8vw,5rem)] leading-none font-bold text-[#FB5E84]"
-          >
+          <span className="translate-y-[-50%] text-[clamp(2rem,8vw,5rem)] leading-none font-bold text-[#FB5E84]">
             {bottomFlip}
           </span>
         </div>
