@@ -76,7 +76,7 @@ export default function App() {
 
   return (
     <>
-      <main className="flex  flex-col gap-22 min-h-screen items-center justify-between bg-[#191A24] pt-20">
+      <main className="flex relative flex-col gap-22 min-h-screen items-center justify-between bg-[#191A24] pt-20">
         {/* stars img */}
         <img
           className="inset-0 z-0 fixed w-full"
@@ -100,6 +100,7 @@ export default function App() {
           hours={hours}
           minutes={minutes}
           seconds={seconds}
+          isEnd={isEnd}
         />
         <button
           ref={btnRef}

@@ -5,9 +5,12 @@ export default function MainTimer({
   hours,
   minutes,
   seconds,
+  isEnd,
 }: MainTimerProps) {
   return (
-    <div className="flex justify-center  gap-4 sm:gap-6 md:gap-8">
+    <div
+      className={`${isEnd ? "h-[10rem]" : "h-fit"} flex justify-center  gap-4 sm:gap-6 md:gap-8`}
+    >
       {/* Days Container */}
       <div className="flex flex-col items-center ">
         <TimeUnit value={days} label="DAYS" />

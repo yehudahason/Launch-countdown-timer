@@ -31,4 +31,5 @@ export type MainTimerProps = {
   hours: number;
   minutes: number;
   seconds: number;
+  isEnd: boolean;
 };
