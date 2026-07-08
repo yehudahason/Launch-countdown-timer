@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, type RefObject } from "react";
 import EndScreen from "./components/EndScreen";
 import NavForm from "./components/NavForm";
 import MainTimer from "./components/MainTimer";
@@ -35,6 +35,9 @@ export default function App() {
     () => Date.now() + toSeconds(initialStart) * 1000,
   );
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const btnRef = useRef<HTMLButtonElement | null>(
+    null,
+  ) as RefObject<HTMLButtonElement>;
 
   const isEnd = secondsRemaining === 0;
   const baseUrl = import.meta.env.BASE_URL;
@@ -73,22 +76,22 @@ export default function App() {
 
   return (
     <>
-      <main className="flex  flex-col gap-13 min-h-screen items-center justify-around bg-[#191A24] pt-20">
+      <main className="flex  flex-col gap-22 min-h-screen items-center justify-between bg-[#191A24] pt-20">
         {/* stars img */}
         <img
-          className="inset-0 z-0 absolute w-full"
+          className="inset-0 z-0 fixed w-full"
           src={`${baseUrl}/bg-stars.svg`}
           alt=""
         />
         {/* hills  img*/}
         <img
-          className="absolute z-1 left-0 right-0 bottom-0 w-full"
+          className="fixed z-1 left-0 right-0 bottom-0 w-full"
           src={`${baseUrl}/pattern-hills.svg`}
           alt=""
         />
         {/* End Screen */}
         {isEnd && <EndScreen />}
-        <h1 className="text-gray-100 uppercase font-bold sm:text-3xl  text-lg">
+        <h1 className="text-gray-100 uppercase font-bold text-3xl sm:w-fit text-center w-[320px]">
           We're launching soon
         </h1>
 
@@ -99,6 +102,7 @@ export default function App() {
           seconds={seconds}
         />
         <button
+          ref={btnRef}
           aria-label="Menu"
           type="button"
           className="  cursor-pointer z-7001"
@@ -114,6 +118,8 @@ export default function App() {
           start={start}
           setStart={setStart}
           handleStart={handleStart}
+          setMenuOpen={setMenuOpen}
+          btnRef={btnRef}
         />
         <SocialsLinks />
         <Footer />

@@ -1,4 +1,4 @@
-import React from "react";
+import { useRef, useEffect } from "react";
 import type { NavFormProps } from "../types/index";
 
 export default function NavForm({
@@ -6,9 +6,32 @@ export default function NavForm({
   start,
   setStart,
   handleStart,
+  setMenuOpen,
+  btnRef,
 }: NavFormProps) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (
+        ref.current &&
+        btnRef?.current &&
+        !ref.current.contains(e.target as Node) &&
+        !btnRef.current.contains(e.target as Node)
+      ) {
+        setMenuOpen(false);
+      }
+    }
+
+    window.addEventListener("mousedown", handleClick);
+
+    return () => {
+      window.removeEventListener("mousedown", handleClick);
+    };
+  }, [setMenuOpen, btnRef]);
   return (
     <div
+      ref={ref}
       role="dialog"
       aria-modal="true"
       aria-labelledby="timer-settings-title"

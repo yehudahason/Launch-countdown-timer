@@ -22,6 +22,8 @@ export interface NavFormProps {
   start: START;
   setStart: StartSetter;
   handleStart: () => void;
+  setMenuOpen: (value: boolean) => void;
+  btnRef: React.RefObject<HTMLButtonElement> | null;
 }
 
 export type MainTimerProps = {
