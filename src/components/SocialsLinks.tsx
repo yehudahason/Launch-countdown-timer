@@ -1,7 +1,7 @@
 export default function SocialsLinks() {
   const baseUrl = import.meta.env.BASE_URL;
   return (
-    <ul aria-label="Socials Links" className="z-1000 mt-8 flex gap-5 ">
+    <ul aria-label="Socials Links" className="z-1000  flex gap-5 ">
       <li>
         <img
           className="fr"
