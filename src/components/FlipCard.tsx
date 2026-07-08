@@ -38,16 +38,16 @@ export default function FlipCard({ value, left }: FlipCardProps) {
 
   return (
     <div
-      className="relative aspect-5/9 sm:w-12  w-7 xs:w-10 ssm:w-11 md:w-17 lg:w-20"
+      className="relative aspect-5/9 sm:w-12  w-9 xs:w-10 ssm:w-11 md:w-17 lg:w-20"
       style={{ perspective: "1000px" }}
     >
       {/* Static Top */}
       <div
-        className={`absolute border inset-x-0 top-0 z-10 flex h-1/2 items-end justify-center overflow-hidden ${left ? "sm:rounded-tl-xl rounded-tl  border-r-0 border-l-blue-900 border-t-blue-900" : "sm:rounded-tr-xl border-l-0 rounded-tr border-r-blue-900 border-t-blue-900"} bg-[#252530] shadow-inner`}
+        className={`absolute border inset-x-0 top-0 z-12 flex h-1/2 items-end justify-center overflow-hidden ${left ? "sm:rounded-tl-xl rounded-tl  border-r-0 border-l-blue-900 border-t-blue-900" : "sm:rounded-tr-xl border-l-0 rounded-tr border-r-blue-900 border-t-blue-900"} bg-[#252530] shadow-inner`}
       >
         <span
           aria-label="hidden"
-          className="translate-y-[50%] text-[clamp(1.75rem,7vw,5rem)] leading-none font-bold text-[#FB5E84]"
+          className="translate-y-[50%] text-[clamp(2rem,8vw,5rem)] leading-none font-bold text-[#FB5E84]"
         >
           {top}
         </span>
@@ -59,7 +59,7 @@ export default function FlipCard({ value, left }: FlipCardProps) {
       >
         <span
           aria-label="hidden"
-          className="translate-y-[-50%] text-[clamp(1.75rem,7vw,5rem)] leading-none font-bold text-[#FB5E84]"
+          className="translate-y-[-50%] text-[clamp(2rem,8vw,5rem)] leading-none font-bold text-[#FB5E84]"
         >
           {bottom}
         </span>
@@ -76,7 +76,7 @@ export default function FlipCard({ value, left }: FlipCardProps) {
         >
           <span
             aria-label="hidden"
-            className="translate-y-[50%] text-[clamp(1.75rem,7vw,5rem)] leading-none font-bold text-[#FB5E84]"
+            className="translate-y-[50%] text-[clamp(2rem,8vw,5rem)] leading-none font-bold text-[#FB5E84]"
           >
             {topFlip}
           </span>
@@ -95,7 +95,7 @@ export default function FlipCard({ value, left }: FlipCardProps) {
         >
           <span
             aria-label="hidden"
-            className="translate-y-[-50%] text-[clamp(1.75rem,7vw,5rem)] leading-none font-bold text-[#FB5E84]"
+            className="translate-y-[-50%] text-[clamp(2rem,8vw,5rem)] leading-none font-bold text-[#FB5E84]"
           >
             {bottomFlip}
           </span>

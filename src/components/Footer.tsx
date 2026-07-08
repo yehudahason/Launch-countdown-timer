@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="z-10000">
+    <footer className="z-15">
       <div className="attribution ">
         Challenge by
         <a

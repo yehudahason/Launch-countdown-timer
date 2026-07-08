@@ -76,7 +76,7 @@ export default function App() {
 
   return (
     <>
-      <main className="flex relative flex-col gap-22 min-h-screen items-center justify-between bg-[#191A24] pt-20">
+      <main className="flex relative flex-col gap-10 ssm:gap-22  min-h-screen items-center justify-between bg-[#191A24] pt-4 ssm:pt-20">
         {/* stars img */}
         <img
           className="inset-0 z-0 fixed w-full"
@@ -85,13 +85,13 @@ export default function App() {
         />
         {/* hills  img*/}
         <img
-          className="fixed z-1 left-0 right-0 bottom-0 w-full"
+          className="fixed z-14 left-0 right-0 bottom-0 w-full"
           src={`${baseUrl}/pattern-hills.svg`}
           alt=""
         />
         {/* End Screen */}
         {isEnd && <EndScreen />}
-        <h1 className="text-gray-100 uppercase font-bold text-3xl sm:w-fit text-center w-[320px]">
+        <h1 className="text-gray-100 uppercase font-bold ssm:text-3xl text-2xl ssm:w-fit text-center sm:tracking-[0.5rem] tracking-wider w-[19rem]">
           We're launching soon
         </h1>
 
@@ -106,7 +106,7 @@ export default function App() {
           ref={btnRef}
           aria-label="Menu"
           type="button"
-          className="  cursor-pointer z-7001"
+          className="  cursor-pointer z-15"
           onClick={() => {
             setMenuOpen(!menuOpen);
           }}

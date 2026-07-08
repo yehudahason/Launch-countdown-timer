@@ -37,7 +37,7 @@ export default function NavForm({
       aria-labelledby="timer-settings-title"
       className={` transition-transform duration-300  ${menuOpen ? "visible scale-110" : "invisible"} fixed 
         top-[42%] 
-        left-[50%] translate-[-50%] z-7001`}
+        left-[50%] translate-[-50%] z-16`}
     >
       <h2 id="timer-settings-title" className="sr-only">
         Timer settings
